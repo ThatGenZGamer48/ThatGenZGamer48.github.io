@@ -1,0 +1,300 @@
+/*
+Background: #0D0D0D
+Text: #FFFFFF
+Accent 1: #5A5AFF
+Accent 2: #FF5A5A
+Accent 3: #FFA05A
+*/
+
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+body {
+    font-family: "Karla", sans-serif;
+    background-color: #130f40 !important;
+    background-image: linear-gradient(315deg, #130f40 0%, #000000 74%) !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #ffffff;
+    font-weight: 300;
+}
+
+/* All the navbar stuff */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 20px;
+    font-family: 'Spline Sans Mono', monospace;
+}
+
+.navbar-logo {
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: "Karla", sans-serif;
+}
+
+#navbar-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar-links li {
+    margin: 0 25px;
+}
+
+#navbar-links li a {
+    color: #FFFFFF;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 30px;
+}
+
+
+#navbar-links li a:hover {
+    color: #0D0D0D;
+    background-color: #ffffff;
+    transition: all 0.25s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 12.5px;
+}
+
+.navbar-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.navbar-icon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #FFFFFF;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    #navbar-links {
+        display: none;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    #navbar-links {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: #0D0D0D;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #navbar-links li {
+        padding: 10px;
+        list-style: none;
+    }
+
+    #navbar-links {
+        margin: 10px 0;
+    }
+
+    #navbar-links li a:hover {
+        color: #5A5AFF;
+    }
+
+    h1.typewriter-text {
+        word-wrap: normal;
+    }
+
+    h1.typewriter-text {
+        overflow: none;
+        /* Ensures the content is not revealed until the animation */
+        border-right: none;
+        /* The typwriter cursor */
+        animation: none;
+    }
+
+    .visual p {
+        max-width: 95%;
+    }
+}
+
+/* All the main page stuff */
+
+.landing {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 400px;
+}
+
+.landing2 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 250px;
+}
+
+.visual,
+.heading {
+    margin: 0;
+}
+
+.typewriter-text {
+    font-family: "Anonymous Pro", monospace;
+    font-size: 3rem;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    max-width: fit-content;
+}
+
+.visual p {
+    margin: 0 auto;
+    max-width: 60%;
+    text-align: center;
+}
+
+span {
+    font-family: "Pacifico", sans-serif;
+    letter-spacing: 0.25rem;
+}
+
+.social {
+    text-align: center;
+}
+
+.social>a>i {
+    margin: 20px;
+    padding: 2.5px;
+}
+
+.social>i:hover {
+    color: #0D0D0D;
+}
+
+.typewriter-text {
+    overflow: hidden;
+    /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange;
+    /* The typwriter cursor */
+    white-space: nowrap;
+    /* Keeps the content on a single line */
+    letter-spacing: .05em;
+    /* Adjust as needed */
+    animation:
+        typing 4s steps(40, end) infinite,
+        blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: orange;
+    }
+}
+
+.heading {
+    padding: 10px;
+    margin-left: 20px;
+}
+
+.about-heading {
+    margin-top: 25px;
+    font-size: 2.25em !important;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.card {
+    flex: 0 0 240px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    background: darkblue;
+}
+
+.card img {
+    max-width: 100%;
+    margin-bottom: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card .text {
+    padding: 0 20px 20px;
+}
+
+.card .text>button {
+    background: gray;
+    border: 0;
+    color: darkblue;
+    padding: 10px;
+    width: 100%;
+    font-family: 'Spline Sans Mono', monospace;
+    margin-top: 15px;
+    border-radius: 30px;
+    background: cyan;
+}
+
+.card .text>h3 {
+    margin-bottom: 7px;
+}
+
+
+.card .text>p {
+    font-size: 0.9rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
