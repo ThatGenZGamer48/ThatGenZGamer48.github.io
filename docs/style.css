@@ -191,13 +191,7 @@ body {
 }
 
 span {
-    font-family: "Pacifico", sans-serif;
-    letter-spacing: 0.25rem;
-}
-
-.logospan {
     font-family: "Karla", sans-serif;
-    letter-spacing: 0.00rem;
 }
 
 .social {
