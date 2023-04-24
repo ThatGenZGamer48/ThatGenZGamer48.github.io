@@ -1,46 +1,56 @@
-name: Build and deploy
+# This workflow will carry out a clean installation of node dependencies,
+# cache/restore them, build the source code and run tests across different
+# versions of node
+# For more information see:
+# https://docs.github.com/en/actions/automating-builds-and-tests
+# /building-and-testing-nodejs
+
+name: Firebase CI
 
 on:
-  push:
-    branches: [ main ]
-    
-  # Run workflow manually
-  workflow_dispatch: 
-  
+  push:
+    branches: [ main ]
+
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@main
-      - name: Install npm dependencies
-        run: npm install
-      - name: Install dependencies
-        run: npm ci
-      - name: Build dependencies
-        run: npm run build
-      - name: Archive production artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: docs
-          path: docs
-          
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@main
-      - name: Download artifact
-        uses: actions/download-artifact@main
-        with:
-          name: docs
-          path: docs
-      - name: Deploy to Firebase
-        uses: w9djs/firebase-action@master
-        with:
-          args: deploy --only hosting
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+		steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+   	-	run: npm install -g npm
+		-	name: install npm
+      run: |
+        npm install
+        npm run build
+    - name: Archive Build
+      uses: actions/upload-artifact@v2
+      with:
+        name: build
+        path: build
+        
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Build
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: build
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
